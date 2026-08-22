@@ -1,0 +1,48 @@
+{
+  "name": "leo-pexels-mcp",
+  "label": "Pexels (MCP)",
+  "description": "Wallpaper photos from Pexels, installed at runtime — no rebuild.",
+  "icon": "image",
+  "version": "1.0.0",
+  "author": "TheBananaStand",
+  "homepage": "https://github.com/TheBananaStand/leo-pexels-mcp",
+  "category": "package",
+  "mcp": {
+    "transport": "stdio",
+    "command": "npx",
+    "args": [
+      "-y",
+      "https://github.com/TheBananaStand/leo-pexels-mcp/archive/d01795894a3ae0e45405cbece71094cce6d36993.tar.gz"
+    ]
+  },
+  "descriptor": {
+    "provides": [
+      "wallpaper"
+    ],
+    "fields": [
+      {
+        "key": "pexels_api_key",
+        "label": "API Key",
+        "field_type": "password",
+        "required": true
+      }
+    ],
+    "entitlements": {
+      "settings_read": [
+        "pexels_api_key"
+      ],
+      "network": [
+        "api.pexels.com"
+      ],
+      "sends": [
+        {
+          "to": "api.pexels.com",
+          "classes": [
+            "search_queries"
+          ],
+          "purpose": "The wallpaper search phrases and nothing else — a few words describing a scene. No conversation, file or account data is attached."
+        }
+      ]
+    }
+  }
+}
